@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco Wildlife Training Limited - Train, Protect, Conserve</title>
+    <!-- Website Title Favicon/Logo -->
+    <link rel="icon" type="image/png" href="logu.png">
     <style>
         :root {
             --primary-dark: #113f1d;
@@ -27,15 +29,15 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
+        /* Header & Navigation (Reduced Height) */
         header {
             background: var(--primary-dark);
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-gold);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -44,12 +46,12 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .brand img {
-            height: 60px;
-            width: 60px;
+            height: 42px;
+            width: 42px;
             object-fit: contain;
             border-radius: 50%;
             background: var(--white);
@@ -57,7 +59,7 @@
         }
 
         .brand h1 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             letter-spacing: 0.5px;
             color: var(--white);
         }
@@ -72,6 +74,7 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -238,7 +241,8 @@
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
+                padding: 0.8rem 1rem;
             }
             .directors-container {
                 gap: 30px;
