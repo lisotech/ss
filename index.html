@@ -29,11 +29,11 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation (Reduced Height) */
+        /* Header & Navigation (Reduced Height & Fully Responsive) */
         header {
             background: var(--primary-dark);
             color: var(--white);
-            padding: 0.5rem 2rem;
+            padding: 0.35rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,20 +46,20 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .brand img {
-            height: 42px;
-            width: 42px;
+            height: 36px;
+            width: 36px;
             object-fit: contain;
             border-radius: 50%;
             background: var(--white);
-            padding: 2px;
+            padding: 1px;
         }
 
         .brand h1 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             letter-spacing: 0.5px;
             color: var(--white);
         }
@@ -67,14 +67,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
         }
 
         nav a {
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
@@ -82,24 +82,28 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section with Logo Background Fully Fitted for Mobile and Computer */
         .hero {
-            background: linear-gradient(rgba(17, 63, 29, 0.8), rgba(30, 86, 49, 0.8)), url('logu.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(17, 63, 29, 0.88), rgba(30, 86, 49, 0.88)), url('logu.png') no-repeat center center;
+            background-size: cover;
+            background-color: var(--primary-dark);
             color: var(--white);
             text-align: center;
-            padding: 5rem 2rem;
+            padding: 6rem 1rem;
         }
 
         .hero h2 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--accent-gold);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 2rem auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .btn {
@@ -113,6 +117,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
@@ -123,12 +128,12 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 1.5rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 3rem;
             color: var(--primary-dark);
             position: relative;
@@ -147,7 +152,7 @@
         /* Courses Grid */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -166,7 +171,7 @@
         }
 
         .course-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--primary-dark);
             margin-bottom: 0.5rem;
         }
@@ -184,7 +189,7 @@
         /* Leadership & Directors Section */
         .leadership-section {
             background: var(--white);
-            padding: 4rem 2rem;
+            padding: 4rem 1.5rem;
             text-align: center;
         }
 
@@ -237,12 +242,28 @@
             color: #ccc;
         }
 
-        /* Responsive */
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 10px;
-                padding: 0.8rem 1rem;
+                gap: 8px;
+                padding: 0.5rem 1rem;
+            }
+            .brand h1 {
+                font-size: 1rem;
+            }
+            nav ul {
+                gap: 12px;
+            }
+            .hero {
+                background-size: cover;
+                padding: 4rem 1rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
             }
             .directors-container {
                 gap: 30px;
