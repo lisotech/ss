@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Wildlife Training Limited - Train, Protect, Conserve</title>
+    <style>
+        :root {
+            --primary-dark: #113f1d;
+            --primary-green: #1e5631;
+            --accent-gold: #c59b27;
+            --light-bg: #f4f7f2;
+            --text-dark: #2c3e2d;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--accent-gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: var(--white);
+            padding: 2px;
+        }
+
+        .brand h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(17, 63, 29, 0.8), rgba(30, 86, 49, 0.8)), url('logu.png') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #d4a930;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-green);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .course-duration {
+            display: inline-block;
+            background: rgba(197, 155, 39, 0.15);
+            color: #8c6d19;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Leadership & Directors Section */
+        .leadership-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .directors-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .director-card {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .director-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-gold);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+        }
+
+        .director-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .director-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .directors-container {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <img src="logu.png" alt="Eco Wildlife Training Limited Logo">
+            <h1>Eco Wildlife Training Limited</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Train • Protect • Conserve</h2>
+        <p>Empowering the next generation of wildlife and conservation professionals through world-class non-firearms training programs.</p>
+        <a href="#courses" class="btn">Explore Our Courses</a>
+    </section>
+
+    <!-- Courses Section -->
+    <main class="container" id="courses">
+        <h2 class="section-title">Proposed Training Courses – Non-Firearms</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <h3>Basic Wildlife Conservation</h3>
+                <span class="course-duration">Duration: 4 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Wildlife Tracking and Identification</h3>
+                <span class="course-duration">Duration: 4 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Anti-Poaching Awareness (Non-Firearms)</h3>
+                <span class="course-duration">Duration: 4 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Bushcraft and Survival Skills</h3>
+                <span class="course-duration">Duration: 2 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Map Reading, Compass and GPS Navigation</h3>
+                <span class="course-duration">Duration: 2 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Wildlife Law and Ethics</h3>
+                <span class="course-duration">Duration: 2 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>Human-Wildlife Conflict Management</h3>
+                <span class="course-duration">Duration: 2 Weeks</span>
+            </div>
+            <div class="course-card">
+                <h3>First Aid and Emergency Response</h3>
+                <span class="course-duration">Duration: 1 Week</span>
+            </div>
+            <div class="course-card">
+                <h3>Camp Management</h3>
+                <span class="course-duration">Duration: 1 Month</span>
+            </div>
+            <div class="course-card">
+                <h3>Ecotourism Management</h3>
+                <span class="course-duration">Duration: 3 Months</span>
+            </div>
+            <div class="course-card">
+                <h3>Learner Tour Guide Training</h3>
+                <span class="course-duration">Duration: 6 Months</span>
+            </div>
+            <div class="course-card">
+                <h3>Professional Tour Guide Training</h3>
+                <span class="course-duration">Duration: 12 Months</span>
+            </div>
+            <div class="course-card">
+                <h3>Leadership, Discipline and Team Building</h3>
+                <span class="course-duration">Duration: 2 Weeks</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership-section">
+        <h2 class="section-title">Our Leadership</h2>
+        <p>Guiding our mission with vision, dedication, and expertise.</p>
+        <div class="directors-container">
+            <div class="director-card">
+                <img src="Mr-Charles-Habinda.png" alt="Mr Charles Habinda">
+                <h4>Mr. Charles Habinda</h4>
+                <p>Director</p>
+            </div>
+            <div class="director-card">
+                <img src="Mr-Reuben-Kasokola.png" alt="Mr Reuben Kasokola">
+                <h4>Mr. Reuben Kasokola</h4>
+                <p>Director</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Eco Wildlife Training Limited. All Rights Reserved. | Train • Protect • Conserve</p>
+    </footer>
+
+</body>
+</html>
