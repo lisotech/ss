@@ -29,7 +29,7 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation (Reduced Height, Logo in Corner, Hamburger Menu) */
+        /* Header & Navigation (Reduced Height, Logo in Corner, Right-aligned Menu) */
         header {
             background: var(--primary-dark);
             color: var(--white);
@@ -268,7 +268,7 @@
             color: #ccc;
         }
 
-        /* Responsive Breakpoints & Mobile Navigation Drawer */
+        /* Responsive Breakpoints & Mobile Navigation Drawer (Reduced width popup & right-aligned text) */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -281,11 +281,16 @@
                 top: 100%;
                 right: 0;
                 background: var(--primary-dark);
-                width: 200px;
-                padding: 1rem;
+                width: 140px; /* Reduced width popup */
+                padding: 0.75rem;
                 border-left: 2px solid var(--accent-gold);
                 border-bottom: 2px solid var(--accent-gold);
                 box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                text-align: right; /* Text aligned to the right */
+            }
+
+            nav ul li {
+                padding: 0.25rem 0;
             }
 
             nav ul.active {
