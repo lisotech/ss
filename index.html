@@ -141,6 +141,7 @@
             text-decoration: none;
             transition: background 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: inline-block;
         }
 
         .btn:hover {
@@ -188,12 +189,19 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border-left: 5px solid var(--primary-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .course-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-content {
+            margin-bottom: 1.2rem;
         }
 
         .course-card h3 {
@@ -210,6 +218,23 @@
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: bold;
+        }
+
+        .apply-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: var(--primary-dark);
+            color: var(--accent-gold);
         }
 
         /* Leadership & Directors Section */
@@ -268,7 +293,7 @@
             color: #ccc;
         }
 
-        /* Responsive Breakpoints & Mobile Navigation Drawer (Reduced width popup & right-aligned text) */
+        /* Responsive Breakpoints & Mobile Navigation Drawer */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -281,12 +306,12 @@
                 top: 100%;
                 right: 0;
                 background: var(--primary-dark);
-                width: 140px; /* Reduced width popup */
+                width: 140px;
                 padding: 0.75rem;
                 border-left: 2px solid var(--accent-gold);
                 border-bottom: 2px solid var(--accent-gold);
                 box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-                text-align: right; /* Text aligned to the right */
+                text-align: right;
             }
 
             nav ul li {
@@ -353,59 +378,8 @@
     <!-- Courses Section -->
     <main class="container" id="courses">
         <h2 class="section-title">Proposed Training Courses – Non-Firearms</h2>
-        <div class="courses-grid">
-            <div class="course-card">
-                <h3>Basic Wildlife Conservation</h3>
-                <span class="course-duration">Duration: 4 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Wildlife Tracking and Identification</h3>
-                <span class="course-duration">Duration: 4 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Anti-Poaching Awareness (Non-Firearms)</h3>
-                <span class="course-duration">Duration: 4 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Bushcraft and Survival Skills</h3>
-                <span class="course-duration">Duration: 2 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Map Reading, Compass and GPS Navigation</h3>
-                <span class="course-duration">Duration: 2 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Wildlife Law and Ethics</h3>
-                <span class="course-duration">Duration: 2 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>Human-Wildlife Conflict Management</h3>
-                <span class="course-duration">Duration: 2 Weeks</span>
-            </div>
-            <div class="course-card">
-                <h3>First Aid and Emergency Response</h3>
-                <span class="course-duration">Duration: 1 Week</span>
-            </div>
-            <div class="course-card">
-                <h3>Camp Management</h3>
-                <span class="course-duration">Duration: 1 Month</span>
-            </div>
-            <div class="course-card">
-                <h3>Ecotourism Management</h3>
-                <span class="course-duration">Duration: 3 Months</span>
-            </div>
-            <div class="course-card">
-                <h3>Learner Tour Guide Training</h3>
-                <span class="course-duration">Duration: 6 Months</span>
-            </div>
-            <div class="course-card">
-                <h3>Professional Tour Guide Training</h3>
-                <span class="course-duration">Duration: 12 Months</span>
-            </div>
-            <div class="course-card">
-                <h3>Leadership, Discipline and Team Building</h3>
-                <span class="course-duration">Duration: 2 Weeks</span>
-            </div>
+        <div class="courses-grid" id="courses-grid">
+            <!-- Courses will be dynamically populated with WhatsApp links via JS -->
         </div>
     </main>
 
@@ -432,7 +406,7 @@
         <p>&copy; 2026 Eco Wildlife Training Limited. All Rights Reserved. | Train • Protect • Conserve</p>
     </footer>
 
-    <!-- Script for Mobile Hamburger Menu Toggle -->
+    <!-- Script for Dynamic Course Population & WhatsApp Redirection -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const navLinks = document.getElementById('nav-links');
@@ -441,11 +415,47 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking a link on mobile
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
+        });
+
+        // List of courses
+        const courses = [
+            { name: "Basic Wildlife Conservation", duration: "4 Weeks" },
+            { name: "Wildlife Tracking and Identification", duration: "4 Weeks" },
+            { name: "Anti-Poaching Awareness (Non-Firearms)", duration: "4 Weeks" },
+            { name: "Bushcraft and Survival Skills", duration: "2 Weeks" },
+            { name: "Map Reading, Compass and GPS Navigation", duration: "2 Weeks" },
+            { name: "Wildlife Law and Ethics", duration: "2 Weeks" },
+            { name: "Human-Wildlife Conflict Management", duration: "2 Weeks" },
+            { name: "First Aid and Emergency Response", duration: "1 Week" },
+            { name: "Camp Management", duration: "1 Month" },
+            { name: "Ecotourism Management", duration: "3 Months" },
+            { name: "Learner Tour Guide Training", duration: "6 Months" },
+            { name: "Professional Tour Guide Training", duration: "12 Months" },
+            { name: "Leadership, Discipline and Team Building", duration: "2 Weeks" }
+        ];
+
+        const phoneNumber = "260974101130"; // Using business contact number
+        const gridContainer = document.getElementById('courses-grid');
+
+        courses.forEach(course => {
+            const message = `Hello Eco Wildlife Training' I want to apply for this course: *${course.name}* (${course.duration}), kindly share the requirements for one to join your trainings`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            const card = document.createElement('div');
+            card.className = 'course-card';
+            card.innerHTML = `
+                <div class="course-content">
+                    <h3>${course.name}</h3>
+                    <span class="course-duration">Duration: ${course.duration}</span>
+                </div>
+                <a href="${whatsappUrl}" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+            `;
+            gridContainer.appendChild(card);
         });
     </script>
 </body>
