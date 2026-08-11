@@ -29,7 +29,7 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation (Reduced Height & Fully Responsive) */
+        /* Header & Navigation (Reduced Height, Logo in Corner, Hamburger Menu) */
         header {
             background: var(--primary-dark);
             color: var(--white);
@@ -64,10 +64,15 @@
             color: var(--white);
         }
 
+        /* Navigation & Hamburger Toggle */
+        nav {
+            position: relative;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 20px;
         }
 
         nav a {
@@ -82,7 +87,25 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section with Logo Background Fully Fitted for Mobile and Computer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section with Immediate CSS Background Display */
         .hero {
             background: linear-gradient(rgba(17, 63, 29, 0.88), rgba(30, 86, 49, 0.88)), url('logu.png') no-repeat center center;
             background-size: cover;
@@ -133,10 +156,13 @@
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 12px;
             margin-bottom: 3rem;
             color: var(--primary-dark);
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .section-title::after {
@@ -242,45 +268,69 @@
             color: #ccc;
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive Breakpoints & Mobile Navigation Drawer */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 8px;
-                padding: 0.5rem 1rem;
+            .menu-toggle {
+                display: flex;
             }
-            .brand h1 {
-                font-size: 1rem;
-            }
+
             nav ul {
-                gap: 12px;
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--primary-dark);
+                width: 200px;
+                padding: 1rem;
+                border-left: 2px solid var(--accent-gold);
+                border-bottom: 2px solid var(--accent-gold);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .brand h1 {
+                font-size: 0.95rem;
+            }
+
             .hero {
-                background-size: cover;
                 padding: 4rem 1rem;
             }
+
             .hero h2 {
                 font-size: 1.8rem;
             }
+
             .hero p {
                 font-size: 0.95rem;
             }
+
             .directors-container {
                 gap: 30px;
             }
         }
     </style>
+    <!-- Preload image to ensure instant display without delay -->
+    <link rel="preload" href="logu.png" as="image">
 </head>
 <body>
 
     <!-- Header -->
     <header>
         <div class="brand">
-            <img src="logu.png" alt="Eco Wildlife Training Limited Logo">
+            <img src="logu.png" alt="Eco Wildlife Training Limited Logo" width="36" height="36">
             <h1>Eco Wildlife Training Limited</h1>
         </div>
         <nav>
-            <ul>
+            <button class="menu-toggle" id="menu-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#leadership">Leadership</a></li>
@@ -356,7 +406,7 @@
 
     <!-- Leadership Section -->
     <section id="leadership" class="leadership-section">
-        <h2 class="section-title">Our Leadership</h2>
+        <h2 class="section-title" style="font-size: 12px;">Our Leadership</h2>
         <p>Guiding our mission with vision, dedication, and expertise.</p>
         <div class="directors-container">
             <div class="director-card">
@@ -377,5 +427,21 @@
         <p>&copy; 2026 Eco Wildlife Training Limited. All Rights Reserved. | Train • Protect • Conserve</p>
     </footer>
 
+    <!-- Script for Mobile Hamburger Menu Toggle -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link on mobile
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
