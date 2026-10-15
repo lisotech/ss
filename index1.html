@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Sanctuary: The Science of Restful Sleep</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        night: {
+                            900: '#0B0D1B',
+                            800: '#12162D',
+                            700: '#1A2040',
+                            600: '#262F58',
+                        },
+                        amber: {
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                        },
+                        violet: {
+                            400: '#A78BFA',
+                            500: '#8B5CF6',
+                            600: '#7C3AED',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0D1B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A2040;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #262F58;
+        }
+        .glass-panel {
+            background: rgba(18, 22, 45, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(26, 32, 64, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-amber {
+            box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25);
+        }
+        .glow-violet {
+            box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-night-900 text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-amber-500 selection:text-night-900">
+
+    <!-- Ambient Background Glows -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] animation-float"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-amber-600/15 rounded-full blur-[140px] animation-float" style="animation-delay: -2s;"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-indigo-600/15 rounded-full blur-[130px] animation-float" style="animation-delay: -4s;"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-violet-600 to-amber-500 flex items-center justify-center shadow-lg shadow-amber-500/10">
+                    <i data-lucide="moon" class="w-5 h-5 text-night-900"></i>
+                </div>
+                <span class="font-bold text-lg tracking-wider text-white">SLEEP<span class="text-amber-400 font-light">SANCTUARY</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#science" class="text-slate-300 hover:text-amber-400 transition-colors">The Science</a>
+                <a href="#schedule" class="text-slate-300 hover:text-amber-400 transition-colors">60-Min Routine</a>
+                <a href="#breathing" class="text-slate-300 hover:text-amber-400 transition-colors">4-7-8 Breathing</a>
+                <a href="#lighting" class="text-slate-300 hover:text-amber-400 transition-colors">Circadian Simulator</a>
+                <a href="#audit" class="text-slate-300 hover:text-amber-400 transition-colors">Bedroom Audit</a>
+            </nav>
+
+            <a href="#schedule" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 transition-all duration-300 text-xs sm:text-sm font-semibold">
+                <span>Start Wind-Down</span>
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center z-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-violet-900/40 border border-violet-500/30 text-violet-300 text-xs sm:text-sm tracking-wide">
+                <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
+                <span>Grounded in Modern Circadian Neuroscience</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight">
+                Master the Science of <br/>
+                <span class="bg-gradient-to-r from-amber-200 via-amber-400 to-violet-400 bg-clip-text text-transparent">Restorative Sleep</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Transform your nights with circadian alignment, thermoregulatory wind-down rituals, and visual lighting optimization designed for deep, uninterrupted recovery.
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#schedule" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-night-900 font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-300 flex items-center justify-center space-x-2">
+                    <span>Explore 60-Min Schedule</span>
+                    <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                </a>
+                <a href="#lighting" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-medium border border-white/10 transition-all duration-300 flex items-center justify-center space-x-2">
+                    <span>Lighting Simulator</span>
+                    <i data-lucide="sun-medium" class="w-5 h-5 text-amber-400"></i>
+                </a>
+            </div>
+
+            <!-- Quick Stats Bar -->
+            <div class="pt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <div class="glass-card p-4 rounded-2xl border border-white/5">
+                    <p class="text-amber-400 text-2xl sm:text-3xl font-bold">1.0-1.5°C</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Core Temp Drop Needed</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-white/5">
+                    <p class="text-violet-400 text-2xl sm:text-3xl font-bold">&lt; 2000K</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Evening Spectrum Target</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-white/5 col-span-2 md:col-span-1">
+                    <p class="text-teal-400 text-2xl sm:text-3xl font-bold">0 LUX</p>
+                    <p class="text-slate-400 text-xs sm:text-sm">Optimal Sleeping Blackout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Section -->
+    <section id="science" class="relative py-24 z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2">Physiological Foundations</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white">The Dual Drivers of Sleep Architecture</h3>
+            <p class="text-slate-400 mt-4">Restful sleep is governed by two biological mechanisms working in tandem. Aligning both produces deep slow-wave and REM sleep.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Driver 1: Circadian Drive -->
+            <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-amber-500/30 transition-all duration-500">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white">1. Circadian Rhythm & Melatonin</h4>
+                        <p class="text-xs text-amber-400/80 font-mono">Process C • The Internal Clock</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                    Driven by the suprachiasmatic nucleus (SCN) in the brain, your circadian clock signals the pineal gland to release **melatonin** as darkness falls.
+                </p>
+                <div class="bg-night-900/60 p-4 rounded-xl border border-white/5 space-y-3">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400">Light Exposure Effect</span>
+                        <span class="text-red-400 font-medium">Blue Light (&gt;450nm) Suppresses Melatonin</span>
+                    </div>
+                    <div class="w-full bg-night-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-gradient-to-r from-red-500 via-amber-500 to-indigo-600 h-full w-full"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-normal">
+                        Intrinsically Photosensitive Retinal Ganglion Cells (ipRGCs) detect bright spectrums, signaling to the brain that it is daytime and suppressing evening drowsiness.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Driver 2: Thermoregulation -->
+            <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-violet-500/30 transition-all duration-500">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all"></div>
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+                        <i data-lucide="thermometer-snowflake" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white">2. Core Thermoregulation</h4>
+                        <p class="text-xs text-violet-400/80 font-mono">Thermoregulatory Cascade</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                    To initiate and maintain sleep, your internal body temperature must drop by approximately **1.0°C to 1.5°C**.
+                </p>
+                <div class="bg-night-900/60 p-4 rounded-xl border border-white/5 space-y-3">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400">Vasodilation Dynamic</span>
+                        <span class="text-teal-400 font-medium">Heat Release via Distal Skin</span>
+                    </div>
+                    <div class="w-full bg-night-800 rounded-full h-2 overflow-hidden">
+                        <div class="bg-gradient-to-r from-amber-500 to-indigo-500 h-full w-3/4"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-normal">
+                        Warming distal extremities (hands and feet) dilates blood vessels, radiating heat out of the core body and signaling the brain's sleep centers to initiate slow-wave sleep.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive 60-Minute Wind-Down Schedule -->
+    <section id="schedule" class="relative py-24 z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2">Protocol Timeline</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white">The 60-Minute Sleep Sanctuary Routine</h3>
+            <p class="text-slate-400 mt-4">Step through each phase of the evening wind-down protocol to prepare your brain and body for deep slumber.</p>
+        </div>
+
+        <!-- Schedule Navigation Tabs -->
+        <div class="flex justify-center mb-8 overflow-x-auto pb-2">
+            <div class="inline-flex p-1.5 rounded-2xl glass-card border border-white/10 space-x-1 sm:space-x-2">
+                <button onclick="setActiveTab(0)" id="tab-0" class="tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 bg-amber-500 text-night-900 shadow-lg">
+                    <span class="font-mono">T-60</span>
+                    <span class="hidden sm:inline">Hydrotherapy</span>
+                </button>
+                <button onclick="setActiveTab(1)" id="tab-1" class="tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-white">
+                    <span class="font-mono">T-40</span>
+                    <span class="hidden sm:inline">Herbal & Digital Cutoff</span>
+                </button>
+                <button onclick="setActiveTab(2)" id="tab-2" class="tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-white">
+                    <span class="font-mono">T-25</span>
+                    <span class="hidden sm:inline">Neural Declutter</span>
+                </button>
+                <button onclick="setActiveTab(3)" id="tab-3" class="tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-white">
+                    <span class="font-mono">T-10</span>
+                    <span class="hidden sm:inline">4-7-8 Breathing</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Schedule Cards Display Container -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 relative overflow-hidden min-h-[420px] flex items-center">
+            
+            <!-- Step 1: T-60 -->
+            <div id="step-content-0" class="step-content w-full grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono">
+                        <i data-lucide="bath" class="w-4 h-4"></i>
+                        <span>60 MINUTES BEFORE BED</span>
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-bold text-white">Warm Hydrotherapy & Magnesium Ritual</h4>
+                    <p class="text-slate-300 leading-relaxed">
+                        Soak in a warm bath (39–40°C / 102–104°F) with **1–2 cups of Epsom salts (magnesium sulfate)** or magnesium flakes for 15–20 minutes.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-night-900/60 border border-white/5 space-y-2">
+                        <h5 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Neuroscience Behind It</h5>
+                        <p class="text-slate-400 text-xs leading-normal">
+                            Warm water causes vasodilation in hands and feet. Stepping out into cool air creates a rapid heat dissipation effect that plunges core body temperature, triggering melatonin release. Transdermal magnesium absorbs through skin to soothe neuromuscular tension.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-4">
+                    <h5 class="text-white font-semibold flex items-center space-x-2">
+                        <i data-lucide="check-circle2" class="w-5 h-5 text-amber-400"></i>
+                        <span>Actionable Checklist</span>
+                    </h5>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Water temperature: 39°C – 40°C</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Add 2 cups Epsom salts or Flakes</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Dim bathroom lights or use candle light</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2: T-40 -->
+            <div id="step-content-1" class="step-content hidden w-full grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono">
+                        <i data-lucide="coffee" class="w-4 h-4"></i>
+                        <span>40 MINUTES BEFORE BED</span>
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-bold text-white">Herbal Nootropic Infusion & Digital Cutoff</h4>
+                    <p class="text-slate-300 leading-relaxed">
+                        Step out of the tub into loose, breathable organic cotton or linen sleepwear. Power down all blue-light screens (smartphones, TVs, laptops). Prepare an infusion of **Chamomile, Passionflower, and Lemon Balm**.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-night-900/60 border border-white/5 space-y-2">
+                        <h5 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Neuroscience Behind It</h5>
+                        <p class="text-slate-400 text-xs leading-normal">
+                            Chamomile and Passionflower contain **apigenin**, a natural bioflavonoid that selectively binds to GABA-A receptors in the brain, decreasing central nervous system hyperarousal and soothing anticipatory anxiety.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-4">
+                    <h5 class="text-white font-semibold flex items-center space-x-2">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i>
+                        <span>Digital Boundary Rules</span>
+                    </h5>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Place phone in another room or charging station</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Sip warm tea in dim warm light</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Wear breathable, thermoregulating fabrics</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3: T-25 -->
+            <div id="step-content-2" class="step-content hidden w-full grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        <span>25 MINUTES BEFORE BED</span>
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-bold text-white">Neural Decluttering & Somatic Unwinding</h4>
+                    <p class="text-slate-300 leading-relaxed">
+                        Spend 5 minutes writing down tomorrow's tasks or worries in a physical notebook ("Brain Dump"). Follow with 5 minutes of gentle somatic poses such as *Child's Pose* or *Legs-Up-The-Wall*.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-night-900/60 border border-white/5 space-y-2">
+                        <h5 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Neuroscience Behind It</h5>
+                        <p class="text-slate-400 text-xs leading-normal">
+                            Expressive journaling offloads working memory from the prefrontal cortex, significantly shortening sleep onset latency (the time needed to fall asleep). Somatic stretching lowers skeletal muscle tone and tone of the sympathetic nervous system.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-4">
+                    <h5 class="text-white font-semibold flex items-center space-x-2">
+                        <i data-lucide="pen-tool" class="w-5 h-5 text-amber-400"></i>
+                        <span>Decluttering Sequence</span>
+                    </h5>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Write out top 3 tasks for tomorrow</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>Expressive brain dump of nagging thoughts</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <span>5 minutes of Legs-Up-The-Wall pose</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4: T-10 -->
+            <div id="step-content-3" class="step-content hidden w-full grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono">
+                        <i data-lucide="wind" class="w-4 h-4"></i>
+                        <span>10 MINUTES BEFORE BED</span>
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-bold text-white">Environmental Dimming & 4-7-8 Breathing</h4>
+                    <p class="text-slate-300 leading-relaxed">
+                        Transition into bed. Ensure the room temperature is set between 15.5–19°C (60–67°F). Perform 4 to 6 cycles of the **4-7-8 Respiratory Anchor**.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-night-900/60 border border-white/5 space-y-2">
+                        <h5 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Neuroscience Behind It</h5>
+                        <p class="text-slate-400 text-xs leading-normal">
+                            Prolonged exhales stimulate the vagus nerve, releasing acetylcholine which decreases heart rate and signals autonomic safety to the brain, transitioning brainwaves into slow alpha and theta frequencies.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10 text-center space-y-4">
+                    <p class="text-xs text-amber-400 font-semibold tracking-wider uppercase">Interactive Exercise</p>
+                    <p class="text-white font-medium">Use our embedded interactive tool below to practice your 4-7-8 cycles right now.</p>
+                    <a href="#breathing" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-amber-500 text-night-900 font-bold hover:bg-amber-400 transition-all text-sm">
+                        <span>Launch Breathing Pacer</span>
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive 4-7-8 Breathing Widget -->
+    <section id="breathing" class="relative py-24 z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 glow-violet text-center space-y-8">
+            <div class="max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold tracking-widest text-violet-400 uppercase">Parasympathetic Activation</span>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">4-7-8 Breathing Pacer Tool</h3>
+                <p class="text-slate-400 text-sm">Inhale for 4s, Hold for 7s, Exhale for 8s. Follow the animated visual ring to trigger vagal nerve activation.</p>
+            </div>
+
+            <!-- Breathing Visualizer Circle -->
+            <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
+                <!-- Glowing Outer Rings -->
+                <div id="pacer-outer-ring" class="absolute inset-0 rounded-full border-2 border-violet-500/20 transition-all duration-1000 scale-100"></div>
+                <div id="pacer-circle" class="w-48 h-48 rounded-full bg-gradient-to-tr from-violet-600/40 to-amber-500/40 border border-violet-400/40 flex flex-col items-center justify-center transition-all duration-[1000ms] shadow-2xl scale-100 backdrop-blur-md">
+                    <span id="pacer-text" class="text-2xl font-bold text-white tracking-wide">Ready</span>
+                    <span id="pacer-timer" class="text-xs font-mono text-amber-300 mt-1">Press Start</span>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center justify-center space-x-4">
+                <button id="pacer-start-btn" onclick="toggleBreathingPacer()" class="px-8 py-3 rounded-full bg-violet-600 hover:bg-violet-500 text-white font-bold transition-all shadow-lg shadow-violet-600/30 flex items-center space-x-2">
+                    <i id="pacer-icon" data-lucide="play" class="w-5 h-5"></i>
+                    <span id="pacer-btn-label">Start Pacer</span>
+                </button>
+            </div>
+            <p class="text-xs text-slate-500">Practice for 4 cycles prior to sleep to ease cognitive hyperarousal.</p>
+        </div>
+    </section>
+
+    <!-- Circadian Lighting Checklist & Interactive Simulator -->
+    <section id="lighting" class="relative py-24 z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2">Photobiology</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white">Bedroom Circadian Lighting Optimization</h3>
+            <p class="text-slate-400 mt-4">Light is the primary zeitgeber (time giver) for human biological rhythms. Realign your lighting spectrum to safeguard your sleep.</p>
+        </div>
+
+        <!-- 3 Key Rules Grid -->
+        <div class="grid md:grid-cols-3 gap-6 mb-16">
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
+                    <i data-lucide="sun-dim" class="w-5 h-5"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white">1. Low Kelvin Spectrum</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Shift to light sources under **2000K** (amber/red tones) 2 hours before bed. Red light bypasses ipRGC receptors in the eye, protecting melatonin synthesis.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
+                    <i data-lucide="arrow-down-left" class="w-5 h-5"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white">2. Low Position Light</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Retinal ganglion cells are clustered denser in the lower portion of the retina to process natural overhead sunlight. Keep night sources below eye level.
+                </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400">
+                    <i data-lucide="eye-off" class="w-5 h-5"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white">3. Zero Lux Blackout</h4>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    Ambient sleeping light, even through closed eyelids, disrupts sleep quality and causes micro-arousals. Utilize 100% blackout curtains or contoured 3D eye masks.
+                </p>
+            </div>
+        </div>
+
+        <!-- Interactive Lighting Color Simulator -->
+        <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h4 class="text-2xl font-bold text-white">Interactive Room Spectrum Simulator</h4>
+                    <p class="text-slate-400 text-xs">Toggle temperature Kelvin presets to see how nighttime screen & lighting shifts affect melatonin impact.</p>
+                </div>
+
+                <!-- Kelvin Toggle Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="setLightingMode('day')" id="btn-light-day" class="light-btn px-4 py-2 rounded-xl text-xs font-semibold border border-white/10 bg-slate-800 text-white hover:bg-slate-700 transition-all">
+                        Daylight (6500K)
+                    </button>
+                    <button onclick="setLightingMode('sunset')" id="btn-light-sunset" class="light-btn px-4 py-2 rounded-xl text-xs font-semibold border border-amber-500/30 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 transition-all">
+                        Sunset Amber (2000K)
+                    </button>
+                    <button onclick="setLightingMode('night')" id="btn-light-night" class="light-btn px-4 py-2 rounded-xl text-xs font-semibold border border-red-500/30 bg-red-500/20 text-red-300 hover:bg-red-500/30 transition-all ring-2 ring-red-500/50">
+                        Sleep Red (1500K)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Simulated Screen Preview Frame -->
+            <div id="simulated-room" class="relative min-h-[260px] rounded-2xl p-8 transition-all duration-700 flex flex-col justify-between border border-white/10 shadow-inner" style="background: linear-gradient(135deg, rgba(220,38,38,0.2) 0%, rgba(15,23,42,0.95) 100%);">
+                <div class="flex justify-between items-start">
+                    <div class="space-y-1">
+                        <span id="sim-kelvin" class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-black/40 text-red-300 border border-red-500/30">1500K Spectrum</span>
+                        <h5 id="sim-title" class="text-lg font-bold text-white pt-2">Bedtime Mode Active</h5>
+                    </div>
+                    <i id="sim-icon" data-lucide="moon" class="w-8 h-8 text-red-400"></i>
+                </div>
+
+                <div class="p-4 rounded-xl bg-black/40 border border-white/10 backdrop-blur-md">
+                    <p id="sim-desc" class="text-xs text-slate-300 leading-relaxed">
+                        **Melatonin Suppression: Minimal (~0%)**. Red spectrum lighting allows natural ipRGC relaxation and prepares your brain for uninterrupted slow-wave sleep.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Bedroom Sleep Audit Checklist -->
+    <section id="audit" class="relative py-24 z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Bedroom Sleep Sanctuary Audit</h3>
+                    <p class="text-slate-400 text-xs mt-1">Track your physical environment progress to ensure maximum sleep architecture optimization.</p>
+                </div>
+                <div class="text-right">
+                    <span id="audit-score" class="text-3xl font-extrabold text-amber-400">0%</span>
+                    <p class="text-xs text-slate-400">Sanctuary Score</p>
+                </div>
+            </div>
+
+            <!-- Audit Items -->
+            <div class="space-y-4" id="audit-list">
+                <!-- Checkitem 1 -->
+                <div onclick="toggleAudit('audit-1')" class="audit-item glass-card p-4 rounded-2xl border border-white/5 cursor-pointer hover:border-amber-500/30 transition-all flex items-start space-x-4">
+                    <div id="audit-1-check" class="w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center mt-0.5 transition-all">
+                        <i data-lucide="check" class="w-4 h-4 text-night-900 hidden"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-white">Thermoregulated Ambient Temperature</h5>
+                        <p class="text-xs text-slate-400 mt-0.5">Thermostat set to 15.5–19°C (60–67°F) with breathable bedding.</p>
+                    </div>
+                </div>
+
+                <!-- Checkitem 2 -->
+                <div onclick="toggleAudit('audit-2')" class="audit-item glass-card p-4 rounded-2xl border border-white/5 cursor-pointer hover:border-amber-500/30 transition-all flex items-start space-x-4">
+                    <div id="audit-2-check" class="w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center mt-0.5 transition-all">
+                        <i data-lucide="check" class="w-4 h-4 text-night-900 hidden"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-white">Absolute Optical Blackout</h5>
+                        <p class="text-xs text-slate-400 mt-0.5">100% blackout curtains installed or contoured 3D eye mask ready at bedside.</p>
+                    </div>
+                </div>
+
+                <!-- Checkitem 3 -->
+                <div onclick="toggleAudit('audit-3')" class="audit-item glass-card p-4 rounded-2xl border border-white/5 cursor-pointer hover:border-amber-500/30 transition-all flex items-start space-x-4">
+                    <div id="audit-3-check" class="w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center mt-0.5 transition-all">
+                        <i data-lucide="check" class="w-4 h-4 text-night-900 hidden"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-white">Low-Kelvin Nighttime Lighting</h5>
+                        <p class="text-xs text-slate-400 mt-0.5">Overhead lights switched off 2h before bed; amber/red bulbs (&lt;2000K) positioned below eye level.</p>
+                    </div>
+                </div>
+
+                <!-- Checkitem 4 -->
+                <div onclick="toggleAudit('audit-4')" class="audit-item glass-card p-4 rounded-2xl border border-white/5 cursor-pointer hover:border-amber-500/30 transition-all flex items-start space-x-4">
+                    <div id="audit-4-check" class="w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center mt-0.5 transition-all">
+                        <i data-lucide="check" class="w-4 h-4 text-night-900 hidden"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-white">Digital Phone Cutoff Station</h5>
+                        <p class="text-xs text-slate-400 mt-0.5">Device chargers placed outside the immediate sleeping perimeter.</p>
+                    </div>
+                </div>
+
+                <!-- Checkitem 5 -->
+                <div onclick="toggleAudit('audit-5')" class="audit-item glass-card p-4 rounded-2xl border border-white/5 cursor-pointer hover:border-amber-500/30 transition-all flex items-start space-x-4">
+                    <div id="audit-5-check" class="w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center mt-0.5 transition-all">
+                        <i data-lucide="check" class="w-4 h-4 text-night-900 hidden"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-white">Magnesium & Herbal Infusion Prepped</h5>
+                        <p class="text-xs text-slate-400 mt-0.5">Epsom bath salts and chamomile/passionflower herbs stocked for evening routine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 border-t border-white/10 z-10 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <p>© Sleep Sanctuary. Synthesizing modern circadian photobiology and thermoregulatory sleep science.</p>
+            <p class="text-slate-600">Designed for optimal slow-wave sleep and recovery.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Interactive Tab Controller for 60-Min Schedule
+        function setActiveTab(index) {
+            // Update tab button styles
+            for (let i = 0; i < 4; i++) {
+                const tab = document.getElementById(`tab-${i}`);
+                const content = document.getElementById(`step-content-${i}`);
+                
+                if (i === index) {
+                    tab.className = "tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 bg-amber-500 text-night-900 shadow-lg";
+                    content.classList.remove('hidden');
+                } else {
+                    tab.className = "tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-white";
+                    content.classList.add('hidden');
+                }
+            }
+        }
+
+        // 2. Interactive 4-7-8 Breathing Pacer Engine
+        let breathingTimer = null;
+        let isBreathingActive = false;
+        let breathState = 'Inhale'; // Inhale (4s), Hold (7s), Exhale (8s)
+        let secondsRemaining = 4;
+
+        function toggleBreathingPacer() {
+            const btnLabel = document.getElementById('pacer-btn-label');
+            const icon = document.getElementById('pacer-icon');
+
+            if (isBreathingActive) {
+                // Stop Pacer
+                clearInterval(breathingTimer);
+                isBreathingActive = false;
+                btnLabel.innerText = "Start Pacer";
+                resetPacerUI();
+            } else {
+                // Start Pacer
+                isBreathingActive = true;
+                btnLabel.innerText = "Pause Pacer";
+                startBreathingCycle();
+            }
+        }
+
+        function resetPacerUI() {
+            const circle = document.getElementById('pacer-circle');
+            const pacerText = document.getElementById('pacer-text');
+            const pacerTimer = document.getElementById('pacer-timer');
+
+            circle.style.transform = 'scale(1)';
+            pacerText.innerText = "Ready";
+            pacerTimer.innerText = "Press Start";
+        }
+
+        function startBreathingCycle() {
+            breathState = 'Inhale';
+            secondsRemaining = 4;
+            updateBreathingUI();
+
+            breathingTimer = setInterval(() => {
+                secondsRemaining--;
+
+                if (secondsRemaining <= 0) {
+                    // State Transitions
+                    if (breathState === 'Inhale') {
+                        breathState = 'Hold';
+                        secondsRemaining = 7;
+                    } else if (breathState === 'Hold') {
+                        breathState = 'Exhale';
+                        secondsRemaining = 8;
+                    } else if (breathState === 'Exhale') {
+                        breathState = 'Inhale';
+                        secondsRemaining = 4;
+                    }
+                }
+                updateBreathingUI();
+            }, 1000);
+        }
+
+        function updateBreathingUI() {
+            const circle = document.getElementById('pacer-circle');
+            const outerRing = document.getElementById('pacer-outer-ring');
+            const pacerText = document.getElementById('pacer-text');
+            const pacerTimer = document.getElementById('pacer-timer');
+
+            pacerText.innerText = breathState;
+            pacerTimer.innerText = `${secondsRemaining}s`;
+
+            if (breathState === 'Inhale') {
+                circle.style.transform = 'scale(1.25)';
+                circle.style.borderColor = 'rgba(245, 158, 11, 0.8)';
+                outerRing.style.transform = 'scale(1.15)';
+            } else if (breathState === 'Hold') {
+                circle.style.transform = 'scale(1.25)';
+                circle.style.borderColor = 'rgba(139, 92, 246, 0.8)';
+                outerRing.style.transform = 'scale(1.25)';
+            } else if (breathState === 'Exhale') {
+                circle.style.transform = 'scale(0.9)';
+                circle.style.borderColor = 'rgba(20, 184, 166, 0.8)';
+                outerRing.style.transform = 'scale(1.0)';
+            }
+        }
+
+        // 3. Circadian Kelvin Lighting Simulator
+        function setLightingMode(mode) {
+            const room = document.getElementById('simulated-room');
+            const kelvinTag = document.getElementById('sim-kelvin');
+            const title = document.getElementById('sim-title');
+            const desc = document.getElementById('sim-desc');
+            const icon = document.getElementById('sim-icon');
+
+            if (mode === 'day') {
+                room.style.background = 'linear-gradient(135deg, rgba(56,189,248,0.25) 0%, rgba(15,23,42,0.95) 100%)';
+                kelvinTag.innerText = "6500K Spectrum";
+                kelvinTag.className = "text-xs font-mono font-bold px-3 py-1 rounded-full bg-black/40 text-sky-300 border border-sky-500/30";
+                title.innerText = "Bright Daylight Mode";
+                desc.innerHTML = "<strong>Melatonin Suppression: High (~85%)</strong>. Blue-wavelength light stimulates ipRGC retinal ganglion cells, signaling peak daytime alertness and suppressing sleep hormones.";
+                icon.setAttribute('data-lucide', 'sun');
+            } else if (mode === 'sunset') {
+                room.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.25) 0%, rgba(15,23,42,0.95) 100%)';
+                kelvinTag.innerText = "2000K Spectrum";
+                kelvinTag.className = "text-xs font-mono font-bold px-3 py-1 rounded-full bg-black/40 text-amber-300 border border-amber-500/30";
+                title.innerText = "Sunset Amber Mode";
+                desc.innerHTML = "<strong>Melatonin Suppression: Moderate-Low (&lt;15%)</strong>. Amber lighting signals evening transition, allowing initial melatonin secretion while maintaining sufficient reading light.";
+                icon.setAttribute('data-lucide', 'sunset');
+            } else if (mode === 'night') {
+                room.style.background = 'linear-gradient(135deg, rgba(220,38,38,0.25) 0%, rgba(15,23,42,0.95) 100%)';
+                kelvinTag.innerText = "1500K Spectrum";
+                kelvinTag.className = "text-xs font-mono font-bold px-3 py-1 rounded-full bg-black/40 text-red-300 border border-red-500/30";
+                title.innerText = "Sleep Red Mode";
+                desc.innerHTML = "<strong>Melatonin Suppression: Minimal (~0%)</strong>. Red spectrum lighting bypasses ipRGC receptors entirely, enabling uninterrupted nocturnal hormone release.";
+                icon.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        }
+
+        // 4. Interactive Bedroom Audit Checklist Tracker
+        const auditState = {
+            'audit-1': false,
+            'audit-2': false,
+            'audit-3': false,
+            'audit-4': false,
+            'audit-5': false
+        };
+
+        function toggleAudit(id) {
+            auditState[id] = !auditState[id];
+            const checkBox = document.getElementById(`${id}-check`);
+            const checkIcon = checkBox.querySelector('i');
+
+            if (auditState[id]) {
+                checkBox.classList.add('bg-amber-400', 'border-amber-400');
+                checkBox.classList.remove('border-slate-600');
+                checkIcon.classList.remove('hidden');
+            } else {
+                checkBox.classList.remove('bg-amber-400', 'border-amber-400');
+                checkBox.classList.add('border-slate-600');
+                checkIcon.classList.add('hidden');
+            }
+
+            // Calculate percentage
+            const total = Object.keys(auditState).length;
+            const completed = Object.values(auditState).filter(Boolean).length;
+            const percentage = Math.round((completed / total) * 100);
+
+            document.getElementById('audit-score').innerText = `${percentage}%`;
+        }
+    </script>
+</body>
+</html>
